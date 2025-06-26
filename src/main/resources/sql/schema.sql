@@ -1,0 +1,7 @@
+
+CREATE TABLE customers (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    firstname VARCHAR(255),
+    lastname VARCHAR(255),
+    tckn VARCHAR(11) UNIQUE NOT NULL
+);
