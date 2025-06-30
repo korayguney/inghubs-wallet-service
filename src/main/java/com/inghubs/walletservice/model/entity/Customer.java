@@ -9,7 +9,7 @@ import lombok.*;
 @AllArgsConstructor
 @Getter
 @Setter
-public class Customer {
+public class Customer extends Auditable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -14,7 +14,7 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 @Getter
 @Setter
-public class Transaction {
+public class Transaction extends Auditable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -8,6 +8,7 @@ import com.inghubs.walletservice.model.entity.Customer;
 import com.inghubs.walletservice.model.entity.Wallet;
 import com.inghubs.walletservice.repository.CustomerRepository;
 import com.inghubs.walletservice.repository.WalletRepository;
+import com.inghubs.walletservice.service.TransactionService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -23,8 +24,9 @@ class WalletServiceImplTest {
 
     private final WalletRepository walletRepository = mock(WalletRepository.class);
     private final CustomerRepository customerRepository = mock(CustomerRepository.class);
+    private final TransactionService transactionService = mock(TransactionService.class);
     private final WalletMapper walletMapper = mock(WalletMapper.class);
-    private final WalletServiceImpl walletService = new WalletServiceImpl(walletRepository, customerRepository, walletMapper);
+    private final WalletServiceImpl walletService = new WalletServiceImpl(walletRepository, customerRepository, transactionService, walletMapper);
 
     @Test
     @DisplayName("createWallet successfully creates wallet for valid customer")

@@ -12,7 +12,7 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 @Getter
 @Setter
-public class Wallet {
+public class Wallet extends Auditable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
