@@ -12,7 +12,7 @@ import java.util.List;
 public interface WalletService {
     CreateWalletResponse createWallet(CreateWalletRequest request);
 
-    List<CreateWalletResponse> listWallets(Long customerId, Currency currency, BigDecimal minAmount, BigDecimal maxAmount);
+    List<CreateWalletResponse> listWallets(Long userId, Currency currency, BigDecimal minAmount, BigDecimal maxAmount);
 
     PaymentResponse makeDeposit(PaymentRequest request);
 

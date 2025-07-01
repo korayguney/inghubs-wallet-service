@@ -9,6 +9,7 @@ import com.inghubs.walletservice.service.WalletService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
@@ -22,14 +23,16 @@ public class WalletController {
     private final WalletService walletService;
 
     @PostMapping
+    @PreAuthorize("hasRole('EMPLOYEE') or (hasRole('CUSTOMER') and #customerId == principal.id)")
     public ResponseEntity<CreateWalletResponse> createWallet(@RequestBody @Valid CreateWalletRequest request) {
         CreateWalletResponse response = walletService.createWallet(request);
         return ResponseEntity.ok(response);
     }
 
     @GetMapping
+    @PreAuthorize("hasRole('EMPLOYEE') or (hasRole('CUSTOMER') and #customerId == principal.id)")
     public ResponseEntity<List<CreateWalletResponse>> listWallets(
-            @RequestParam(required = false) Long customerId,
+            @RequestParam Long customerId,
             @RequestParam(required = false) Currency currency,
             @RequestParam(required = false) BigDecimal minAmount,
             @RequestParam(required = false) BigDecimal maxAmount) {
@@ -38,12 +41,14 @@ public class WalletController {
     }
 
     @PostMapping("/deposit")
+    @PreAuthorize("hasRole('EMPLOYEE') or (hasRole('CUSTOMER') and #customerId == principal.id)")
     public ResponseEntity<PaymentResponse> makeDeposit(@RequestBody @Valid PaymentRequest request) {
         PaymentResponse response = walletService.makeDeposit(request);
         return ResponseEntity.ok(response);
     }
 
     @PostMapping("/withdraw")
+    @PreAuthorize("hasRole('EMPLOYEE') or (hasRole('CUSTOMER') and #customerId == principal.id)")
     public ResponseEntity<PaymentResponse> makeWithdraw(@RequestBody @Valid PaymentRequest request) {
         PaymentResponse response = walletService.makeWithdraw(request);
         return ResponseEntity.ok(response);

@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@Table(name = "customers")
+@Table(name = "customer")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -14,6 +14,10 @@ public class Customer extends Auditable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    private String username;
+
+    private String password;
 
     private String firstname;
 

@@ -7,7 +7,7 @@ import lombok.*;
 import java.math.BigDecimal;
 
 @Entity
-@Table(name = "wallets")
+@Table(name = "wallet")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
