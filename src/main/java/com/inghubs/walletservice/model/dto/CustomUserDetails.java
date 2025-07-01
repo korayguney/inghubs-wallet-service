@@ -8,6 +8,10 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 
+/**
+ * Custom implementation of the UserDetails interface for Spring Security.
+ * Represents the authenticated user's details.
+ */
 @Getter
 @ToString
 @AllArgsConstructor

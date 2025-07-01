@@ -10,6 +10,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 public interface WalletService {
+
     CreateWalletResponse createWallet(CreateWalletRequest request);
 
     List<CreateWalletResponse> listWallets(Long userId, Currency currency, BigDecimal minAmount, BigDecimal maxAmount);

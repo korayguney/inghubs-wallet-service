@@ -10,12 +10,25 @@ import org.springframework.stereotype.Repository;
 import java.math.BigDecimal;
 import java.util.List;
 
+/**
+ * Implementation of the WalletRepositoryCriteria interface.
+ * Provides methods for querying wallets based on various filters using JPA Criteria API.
+ */
 @Repository
 public class WalletRepositoryCriteriaImpl implements WalletRepositoryCriteria {
 
     @PersistenceContext
     private EntityManager entityManager;
 
+    /**
+     * Finds wallets based on the provided filters such as customer ID, currency, and balance range.
+     *
+     * @param customerId The ID of the customer whose wallets are to be retrieved (optional).
+     * @param currency The currency type to filter wallets (optional).
+     * @param minAmount The minimum balance to filter wallets (optional).
+     * @param maxAmount The maximum balance to filter wallets (optional).
+     * @return A list of Wallet entities matching the specified filters.
+     */
     @Override
     public List<Wallet> findWalletsByFilters(Long customerId, Currency currency, BigDecimal minAmount, BigDecimal maxAmount) {
         CriteriaBuilder cb = entityManager.getCriteriaBuilder();

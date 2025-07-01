@@ -11,6 +11,7 @@ import com.inghubs.walletservice.model.entity.Wallet;
 import java.util.List;
 
 public interface TransactionService {
+
     Transaction createTransaction(Transaction transaction);
 
     Transaction processTransaction(Wallet wallet, PaymentRequest request, TransactionStatus transactionStatus, TransactionType transactionType);
@@ -18,5 +19,4 @@ public interface TransactionService {
     List<TransactionResponse> findTransactionsByWalletId(Long walletId);
 
     TransactionResponse approveTransaction(TransactionApprovalRequest request);
-
 }

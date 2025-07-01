@@ -3,6 +3,7 @@ package com.inghubs.walletservice.model.entity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.security.core.context.SecurityContextHolder;
 
 import java.time.LocalDateTime;
 
@@ -26,17 +27,21 @@ public abstract class Auditable {
     @PrePersist
     protected void onCreate() {
         this.createdDate = LocalDateTime.now();
-        this.createdBy = getCurrentUser(); // Replace with actual user retrieval logic
+        this.createdBy = getCurrentUser();
     }
 
     @PreUpdate
     protected void onUpdate() {
         this.updatedDate = LocalDateTime.now();
-        this.updatedBy = getCurrentUser(); // Replace with actual user retrieval logic
+        this.updatedBy = getCurrentUser();
     }
 
     private String getCurrentUser() {
-        // Implement logic to retrieve the current user (e.g., from security context)
-        return "system"; // Placeholder value
+        var authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        if (authentication != null && authentication.getPrincipal() instanceof org.springframework.security.core.userdetails.UserDetails) {
+            return ((org.springframework.security.core.userdetails.UserDetails) authentication.getPrincipal()).getUsername();
+        }
+        return "system";
     }
 }

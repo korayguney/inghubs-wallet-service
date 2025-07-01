@@ -8,5 +8,7 @@ import java.util.List;
 
 
 public interface WalletRepositoryCriteria {
+
     List<Wallet> findWalletsByFilters(Long customerId, Currency currency, BigDecimal minAmount, BigDecimal maxAmount);
+
 }
