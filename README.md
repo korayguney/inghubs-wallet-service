@@ -130,3 +130,8 @@ curl --location 'http://localhost:8080/api/transactions/approve' \
   "status": "APPROVED"
 }'
 ```
+
+## Author
+- **Name**: Koray Güney
+- **LinkedIn**: [linkedin.com/in/korayguney](https://www.linkedin.com/in/koray-guney-77599992/)
+- **GitHub**: [github.com/korayguney](https://github.com/korayguney/)
